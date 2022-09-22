@@ -1,0 +1,13 @@
+:host.selected {
+  background: #1976d2;
+}
+
+:host:hover {
+  &:not(.selected) {
+    background: #888888;
+  }
+
+  &.selected {
+    background: #125699;
+  }
+}

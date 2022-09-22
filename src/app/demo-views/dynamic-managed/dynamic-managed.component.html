@@ -1,0 +1,9 @@
+<h1>Dynamic Component - Standalone + Lazy Loaded</h1>
+<p>This demo shows how to dynamically lazy load a standalone component.</p>
+
+<input #newTitle>
+<button (click)="changeTitle(newTitle.value)">Change title directly</button>
+<button (click)="setInputTitle(newTitle.value)">Change title with Set Input</button>
+<br>
+<button (click)="addComponent()">Add Component</button>
+<ng-container #placeholder></ng-container>

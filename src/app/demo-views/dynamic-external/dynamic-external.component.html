@@ -1,0 +1,10 @@
+<h1>Dynamic Component - External</h1>
+<p>This demo shows how to dynamically load an external component.</p>
+
+<input #newTitle>
+<button (click)="changeTitle(newTitle.value)">Change title directly</button>
+<button (click)="setInputTitle(newTitle.value)">Change title with Set Input</button>
+<br>
+<input #path>
+<button (click)="addComponent(path.value)">Add Component</button>
+<ng-container #placeholder></ng-container>
