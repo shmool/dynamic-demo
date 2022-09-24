@@ -1,0 +1,15 @@
+<h1>Dynamic Component - From Config</h1>
+<p>This demo shows how to dynamically lazy load standalone components using a config.</p>
+
+<input #config (keyup.enter)="components = config.value">
+<p>
+  {{ _componentsArray | json }}
+</p>
+
+<input #newTitle>
+<button (click)="changeTitle(newTitle.value)">Change title directly</button>
+<button (click)="setInputTitle(newTitle.value)">Change title with Set Input</button>
+<br>
+<button (click)="addComponents()">Add Component</button>
+<ng-container #placeholder></ng-container>
+<ng-template #projection><h2>Hello world!</h2></ng-template>

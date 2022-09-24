@@ -9,6 +9,7 @@ import { DynamicExternalComponent } from './demo-views/dynamic-external/dynamic-
 import { DynamicPositionComponent } from './demo-views/dynamic-position/dynamic-position.component';
 import { VillaggioDelPescatoreComponent } from './villaggio-del-pescatore/villaggio-del-pescatore.component';
 import { DynamicManagedComponent } from './demo-views/dynamic-managed/dynamic-managed.component';
+import { DynamicConfigComponent } from './demo-views/dynamic-config/dynamic-config.component';
 
 const routes: Routes = [
   {path: '', component: AngularStarterComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'demo/4', component: DynamicExternalComponent},
   {path: 'demo/5', component: DynamicPositionComponent},
   {path: 'demo/6', component: DynamicManagedComponent},
+  {path: 'demo/7', component: DynamicConfigComponent},
   {path: 'dinos', component: VillaggioDelPescatoreComponent}
 ];
 

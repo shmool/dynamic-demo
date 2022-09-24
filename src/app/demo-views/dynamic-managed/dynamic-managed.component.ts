@@ -24,7 +24,8 @@ export class DynamicManagedComponent implements OnInit {
     const addedComponent = this.placeholder.createComponent(cmp);
     this.addedComponents.push(addedComponent);
 
-    addedComponent.instance.close.subscribe(() => addedComponent.destroy());
+    const closeSub = addedComponent.instance.close
+      .subscribe(() => addedComponent.destroy());
 
     const clickSubscription = fromEvent(addedComponent.location.nativeElement, 'click')
       .subscribe((pointerEvent) => {
@@ -33,13 +34,18 @@ export class DynamicManagedComponent implements OnInit {
         this.selectedComponent = addedComponent;
       });
 
+    // this doesn't work!
     const destroy = fromEvent(addedComponent.location.nativeElement, 'close')
-      .subscribe((pointerEvent) => addedComponent.destroy());
+      .subscribe((pointerEvent) => {
+        console.log('pointerEvent');
+        addedComponent.destroy();
+      });
 
     addedComponent.onDestroy(() => {
       const cmpIndex = this.addedComponents.findIndex((cmp) => cmp === addedComponent);
       this.addedComponents = [...this.addedComponents.slice(0, cmpIndex), ...this.addedComponents.slice(cmpIndex+1, this.addedComponents.length)];
       clickSubscription.unsubscribe();
+      closeSub.unsubscribe();
     });
   }
 

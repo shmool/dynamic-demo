@@ -18,12 +18,12 @@
 
   &:hover {
     &:not(.selected) {
-      background: #888888;
+      background: rgba(136, 136, 136, 0.48);
     }
 
-    &.selected {
-      background: #125699;
-    }
+    //&.selected {
+    //  background: rgba(18, 86, 153, 0.69);
+    //}
 
     .close {
       visibility: visible;
@@ -34,5 +34,5 @@
 }
 
 :host.selected .dino-container {
-  background: #1976d2;
+  background: rgba(25, 118, 210, 0.7);
 }

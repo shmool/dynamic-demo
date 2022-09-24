@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatCommonModule } from '@angular/material/core';
@@ -15,6 +15,8 @@ import { MatCommonModule } from '@angular/material/core';
 export class Dino1Component implements OnInit {
   @Input() name = 'Connectosaurus';
   @Input() scale = 1;
+  @Output() close = new EventEmitter();
+
   get transform() {
     return `scale(${this.scale})`;
   }

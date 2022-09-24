@@ -1,5 +1,22 @@
 <h1>Welcome to Villaggio del Pescatore!</h1>
-<button (click)="add = !add">{{ add ? 'stop adding' : 'start adding' }}</button>
+<button (click)="add = !add">{{ add ? 'Lock' : 'Edit' }}</button>
+<ng-container *ngIf="!selectedComponent">
+  <label><input type="radio" name="add_type" (select)="addType = 'dino'">Add Dino</label>
+  <label><input type="radio" name="add_type" (select)="addType = 'plant'">Add Plant</label>
+  
+</ng-container>
+<ng-container *ngIf="selectedComponent">
+  <button (click)="changeDino()">Change Dino</button>
+  <button (click)="moveDino('top', -1)">Move Up</button>
+  <button (click)="moveDino('top', 1)">Move Down</button>
+  <button (click)="moveDino('left', -1)">Move Left</button>
+  <button (click)="moveDino('left', 1)">Move Right</button>
+  <button (click)="scaleDino(-1)">Shrink</button>
+  <button (click)="scaleDino(1)">Grow</button>
+  <button (click)="flipDino()">Flip</button>
+</ng-container>
+
+
 <div id="dino-world" (click)="addComponent($event)">
   <ng-container #placeholder></ng-container>
 

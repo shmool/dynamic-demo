@@ -15,6 +15,7 @@ import { DynamicExternalComponent } from './demo-views/dynamic-external/dynamic-
 import { DynamicPositionComponent } from './demo-views/dynamic-position/dynamic-position.component';
 import { VillaggioDelPescatoreComponent } from './villaggio-del-pescatore/villaggio-del-pescatore.component';
 import { DynamicManagedComponent } from './demo-views/dynamic-managed/dynamic-managed.component';
+import { DynamicConfigComponent } from './demo-views/dynamic-config/dynamic-config.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { DynamicManagedComponent } from './demo-views/dynamic-managed/dynamic-ma
     DynamicExternalComponent,
     DynamicPositionComponent,
     VillaggioDelPescatoreComponent,
-    DynamicManagedComponent
+    DynamicManagedComponent,
+    DynamicConfigComponent
   ],
   imports: [
     BrowserModule,
