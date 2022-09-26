@@ -1,19 +1,24 @@
 <h1>Welcome to Villaggio del Pescatore!</h1>
-<button (click)="add = !add">{{ add ? 'Lock' : 'Edit' }}</button>
+<button mat-raised-button color="accent" (click)="add = !add">{{ add ? 'Lock' : 'Edit' }}</button>
 <ng-container *ngIf="!selectedComponent">
-  <label><input type="radio" name="add_type" (select)="addType = 'dino'">Add Dino</label>
-  <label><input type="radio" name="add_type" (select)="addType = 'plant'">Add Plant</label>
+  <mat-button-toggle-group name="itemType" aria-label="Item type to add" (change)="itemType=$event.value">
+    <mat-button-toggle value="dino">Dino</mat-button-toggle>
+    <mat-button-toggle value="plant">Plant</mat-button-toggle>
+    <mat-button-toggle value="prop">Prop</mat-button-toggle>
+  </mat-button-toggle-group>
+  <!--<label><input mat-raised-button color="accent" type="radio" name="add_type" (select)="addType = 'dino'">Add Dino</label>-->
+  <!--<label><input mat-raised-button color="accent" type="radio" name="add_type" (select)="addType = 'plant'">Add Plant</label>-->
   
 </ng-container>
 <ng-container *ngIf="selectedComponent">
-  <button (click)="changeDino()">Change Dino</button>
-  <button (click)="moveDino('top', -1)">Move Up</button>
-  <button (click)="moveDino('top', 1)">Move Down</button>
-  <button (click)="moveDino('left', -1)">Move Left</button>
-  <button (click)="moveDino('left', 1)">Move Right</button>
-  <button (click)="scaleDino(-1)">Shrink</button>
-  <button (click)="scaleDino(1)">Grow</button>
-  <button (click)="flipDino()">Flip</button>
+  <button mat-raised-button color="accent" (click)="changeDino()">Change Dino</button>
+  <button mat-raised-button color="accent" (click)="moveDino('top', -1)">Move Up</button>
+  <button mat-raised-button color="accent" (click)="moveDino('top', 1)">Move Down</button>
+  <button mat-raised-button color="accent" (click)="moveDino('left', -1)">Move Left</button>
+  <button mat-raised-button color="accent" (click)="moveDino('left', 1)">Move Right</button>
+  <button mat-raised-button color="accent" (click)="scaleDino(-1)">Shrink</button>
+  <button mat-raised-button color="accent" (click)="scaleDino(1)">Grow</button>
+  <button mat-raised-button color="accent" (click)="flipDino()">Flip</button>
 </ng-container>
 
 

@@ -15,7 +15,7 @@ export class VillaggioDelPescatoreComponent implements OnInit {
   placeholder!: ViewContainerRef;
   addedComponents: ComponentRef<any>[] = [];
   selectedComponent: ComponentRef<any> | undefined;
-  addType = 'dino';
+  itemType = 'dino';
   add = true;
 
   addedComponent: ComponentRef<any> | undefined;
@@ -30,7 +30,7 @@ export class VillaggioDelPescatoreComponent implements OnInit {
     if (!this.add) return;
     const cmp = (await import('../../dynamic-components/dino-wrapper/dino-wrapper.component')).DinoWrapperComponent;
     const addedComponent = this.placeholder.createComponent(cmp);
-    this.addType === 'dino' ?
+    this.itemType === 'dino' ?
     addedComponent.setInput('dinoType', randomInt(6)) :
     addedComponent.setInput('plantType', randomInt(6));
     addedComponent.setInput('clickEvent', e);

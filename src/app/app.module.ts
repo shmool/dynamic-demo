@@ -16,6 +16,8 @@ import { DynamicPositionComponent } from './demo-views/dynamic-position/dynamic-
 import { VillaggioDelPescatoreComponent } from './villaggio-del-pescatore/villaggio-del-pescatore.component';
 import { DynamicManagedComponent } from './demo-views/dynamic-managed/dynamic-managed.component';
 import { DynamicConfigComponent } from './demo-views/dynamic-config/dynamic-config.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { DynamicConfigComponent } from './demo-views/dynamic-config/dynamic-conf
     BrowserModule,
     AppRoutingModule,
     FlyDirective,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
