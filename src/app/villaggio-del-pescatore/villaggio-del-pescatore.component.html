@@ -6,12 +6,10 @@
     <mat-button-toggle value="plant">Plant</mat-button-toggle>
     <mat-button-toggle value="prop">Prop</mat-button-toggle>
   </mat-button-toggle-group>
-  <!--<label><input mat-raised-button color="accent" type="radio" name="add_type" (select)="addType = 'dino'">Add Dino</label>-->
-  <!--<label><input mat-raised-button color="accent" type="radio" name="add_type" (select)="addType = 'plant'">Add Plant</label>-->
   
 </ng-container>
 <ng-container *ngIf="selectedComponent">
-  <button mat-raised-button color="accent" (click)="changeDino()">Change Dino</button>
+  <button *ngIf="selectedComponent.instance.dinoType !== undefined" mat-raised-button color="accent" (click)="changeDino()">Change Dino</button>
   <button mat-raised-button color="accent" (click)="moveDino('top', -1)">Move Up</button>
   <button mat-raised-button color="accent" (click)="moveDino('top', 1)">Move Down</button>
   <button mat-raised-button color="accent" (click)="moveDino('left', -1)">Move Left</button>

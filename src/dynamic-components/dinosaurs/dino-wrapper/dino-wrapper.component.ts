@@ -8,7 +8,8 @@ import {
   OnInit,
   SimpleChanges
 } from '@angular/core';
-import { DynamicWrapper } from '../dynamic-wrapper.component';
+import { DynamicWrapper } from '../../dynamic-wrapper.component';
+import { itemsConfig } from './dinos';
 
 @Component({
   selector: 'app-dino-wrapper',
@@ -36,7 +37,8 @@ export class DinoWrapperComponent extends DynamicWrapper implements OnInit, Afte
   override ngOnChanges(changes: SimpleChanges): void {
     super.ngOnChanges(changes);
     if (changes['dinoType']) {
-      this.insertDino(this.dinoType);
+      const itemConfig = itemsConfig[this.dinoType];
+      super.insertItem(itemConfig, this.dinoType);
     }
 
   }

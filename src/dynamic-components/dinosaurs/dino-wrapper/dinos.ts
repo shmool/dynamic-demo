@@ -1,4 +1,4 @@
-export const dinosConfig = [
+export const itemsConfig = [
   {
     componentName: 'dino1',
     component: async () => (await import('src/dynamic-components/dinosaurs/dino1/dino.component')).DinoComponent,

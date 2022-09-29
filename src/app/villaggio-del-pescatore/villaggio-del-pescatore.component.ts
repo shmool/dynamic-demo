@@ -1,9 +1,25 @@
-import { Component, ComponentRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ComponentRef, OnInit, Type, ViewChild, ViewContainerRef } from '@angular/core';
 import { fromEvent } from 'rxjs';
 
 function randomInt(count: number, min = 0) {
   return Math.floor(Math.random() * count + min);
 }
+
+const itemTypesConfig: {[index: string]:any}= {
+  dino: {
+    component: async () => (await import('../../dynamic-components/dinosaurs/dino-wrapper/dino-wrapper.component')).DinoWrapperComponent,
+    number: 6,
+    typeInput: 'dinoType'
+  }, plant: {
+    component: async () => (await import('../../dynamic-components/plants/plant-wrapper/plant-wrapper.component')).PlantWrapperComponent,
+    number: 3,
+    typeInput: 'plantType'
+  }, prop: {
+    component: async () => (await import('../../dynamic-components/props/prop-wrapper/prop-wrapper.component')).PropWrapperComponent,
+    number: 3,
+    typeInput: 'propType'
+  }
+};
 
 @Component({
   selector: 'app-villaggio-del-pescatore',
@@ -28,11 +44,10 @@ export class VillaggioDelPescatoreComponent implements OnInit {
 
   async addComponent(e: any) {
     if (!this.add) return;
-    const cmp = (await import('../../dynamic-components/dino-wrapper/dino-wrapper.component')).DinoWrapperComponent;
+    const cmpConfig = itemTypesConfig[this.itemType];
+    const cmp = await cmpConfig.component();
     const addedComponent = this.placeholder.createComponent(cmp);
-    this.itemType === 'dino' ?
-    addedComponent.setInput('dinoType', randomInt(6)) :
-    addedComponent.setInput('plantType', randomInt(6));
+    addedComponent.setInput(cmpConfig.typeInput, randomInt(cmpConfig.number));
     addedComponent.setInput('clickEvent', e);
     addedComponent.location.nativeElement.style.position = 'absolute';
     addedComponent.location.nativeElement.style.left = e.clientX - 100 + 'px';
@@ -55,7 +70,10 @@ export class VillaggioDelPescatoreComponent implements OnInit {
       });
 
     const destroy = fromEvent(addedComponent.location.nativeElement, 'dblclick')
-      .subscribe((pointerEvent) => addedComponent.destroy());
+      .subscribe((pointerEvent) => {
+        addedComponent.destroy();
+        this.selectedComponent = undefined;
+      });
 
     addedComponent.onDestroy(() => {
       const cmpIndex = this.addedComponents.findIndex((cmp) => cmp === addedComponent);
@@ -76,7 +94,9 @@ export class VillaggioDelPescatoreComponent implements OnInit {
 
   scaleDino(direction: number) {
     let newScale = this.selectedComponent!.instance.scale;
-    do { newScale = newScale + (0.2 * direction)} while (newScale < 0.01 && newScale > -0.01);
+    do {
+      newScale = newScale + (0.2 * direction)
+    } while (newScale < 0.01 && newScale > -0.01);
     this.selectedComponent!.setInput('scale', newScale);
   }
 

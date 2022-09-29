@@ -1,0 +1,38 @@
+.dino-container {
+  border-radius: 50%;
+  position: relative;
+  width: max-content;
+
+  .close {
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    background: #e50604;
+    border-radius: 50%;
+    text-align: center;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &:hover {
+    &:not(.selected) {
+      background: rgba(136, 136, 136, 0.48);
+    }
+
+    //&.selected {
+    //  background: rgba(18, 86, 153, 0.69);
+    //}
+
+    .close {
+      visibility: visible;
+    }
+
+  }
+
+}
+
+:host.selected .dino-container {
+  background: rgba(25, 118, 210, 0.7);
+}
