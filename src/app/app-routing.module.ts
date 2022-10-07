@@ -12,7 +12,8 @@ import { DynamicManagedComponent } from './demo-views/dynamic-managed/dynamic-ma
 import { DynamicConfigComponent } from './demo-views/dynamic-config/dynamic-config.component';
 
 const routes: Routes = [
-  {path: '', component: AngularStarterComponent},
+  {path: '', component: VillaggioDelPescatoreComponent},
+  {path: 'ng', component: AngularStarterComponent},
   {path: 'dynamic', component: HomeComponent},
   {path: 'demo/1', component: DynamicInModuleComponent},
   {path: 'demo/2', component: DynamicStandaloneComponent},
