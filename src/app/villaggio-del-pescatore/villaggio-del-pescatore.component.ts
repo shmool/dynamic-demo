@@ -32,7 +32,7 @@ export class VillaggioDelPescatoreComponent implements OnInit {
   addedComponents: ComponentRef<any>[] = [];
   selectedComponent: ComponentRef<any> | undefined;
   itemType = 'dino';
-  add = true;
+  // add = true;
 
   addedComponent: ComponentRef<any> | undefined;
 
@@ -43,7 +43,7 @@ export class VillaggioDelPescatoreComponent implements OnInit {
   }
 
   async addComponent(e: any) {
-    if (!this.add) return;
+    // if (!this.add) return;
     const cmpConfig = itemTypesConfig[this.itemType];
     const cmp = await cmpConfig.component();
     const addedComponent = this.placeholder.createComponent(cmp);
@@ -102,5 +102,26 @@ export class VillaggioDelPescatoreComponent implements OnInit {
 
   flipDino() {
     this.selectedComponent!.setInput('flip', -this.selectedComponent!.instance.flip);
+  }
+
+  save() {
+    // console.log(this.addedComponents)
+    const dinoData = this.addedComponents.map((cmp => {
+      return {
+        dinoType: cmp.instance.dinoType,
+        plantType: cmp.instance.plantType,
+        propType: cmp.instance.propType,
+        flip: cmp.instance.flip,
+        scale: cmp.instance.scale,
+        left: cmp.location.nativeElement.style.left,
+        top: cmp.location.nativeElement.style.top
+      }
+    }));
+    console.log(dinoData);
+  }
+
+  load(dinoData: any) {
+    dinoData.forEach()
+
   }
 }

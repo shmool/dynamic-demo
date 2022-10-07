@@ -1,5 +1,5 @@
 <h1>Welcome to Villaggio del Pescatore!</h1>
-<button mat-raised-button color="accent" (click)="add = !add">{{ add ? 'Lock' : 'Edit' }}</button>
+<!--<button mat-raised-button color="accent" (click)="add = !add">{{ add ? 'Lock' : 'Edit' }}</button>-->
 <ng-container *ngIf="!selectedComponent">
   <mat-button-toggle-group name="itemType" aria-label="Item type to add" (change)="itemType=$event.value">
     <mat-button-toggle value="dino">Dino</mat-button-toggle>
